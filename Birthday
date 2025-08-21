@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>İyi ki Doğdun!</title>
+  <meta name="theme-color" content="#ff6b6b" />
+  <style>
+    :root{
+      --bg1:#ffd6e8;--bg2:#fff0f5;--card:#ffffffcc;--accent:#ff4da6;--text:#222
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text);padding:16px
+    }
+    .card{
+      width:100%;max-width:540px;background:var(--card);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-radius:28px; box-shadow:0 12px 36px rgba(0,0,0,.12);
+      padding:28px; text-align:center; position:relative; z-index:1
+    }
+    .emoji{
+      font-size:4rem; margin-bottom:20px; display:block;
+    }
+    h1{
+      font-size:2.4rem;margin:14px 0 14px;
+      color:var(--accent);
+      font-weight:700
+    }
+    p{margin:0;font-size:1.2rem;opacity:.95;line-height:1.6;color:#000}
+    .footer{font-size:1.1rem;margin-top:18px;opacity:.85;font-weight:500}
+
+    .cake-btn{
+      margin-top:22px; font-size:2rem; cursor:pointer;
+      transition: transform 0.3s ease;
+      display:inline-block;
+    }
+    .cake-btn.animate{ animation: bounce 0.8s ease forwards; }
+    @keyframes bounce{
+      0%{transform:scale(1)}
+      30%{transform:scale(1.4)}
+      60%{transform:scale(0.9)}
+      100%{transform:scale(1)}
+    }
+
+    .send-btn{
+      margin-top:26px;
+      padding:12px 20px;
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      border-radius:20px;
+      font-size:1rem;
+      cursor:pointer;
+      transition: background 0.3s, transform .08s;
+    }
+    .send-btn:active{ transform: scale(.98); }
+    .send-btn:hover{background:#e63c91}
+
+    .confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+    .confetti span{position:absolute;top:-10px;width:10px;height:14px;opacity:.9;border-radius:3px;animation:fall linear forwards}
+    @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+  </style>
+</head>
+<body>
+  <div class="confetti" id="confetti"></div>
+
+  <main class="card" role="main" aria-label="Doğum günü mesajı">
+    <div class="emoji">💖</div>
+    <h1>Doğum Günün Kutlu Olsun🥳</h1>
+    <p>İyi ki varsın, iyi ki doğdun. Umarım hayatın sağlıklı mutlu ve istediğin gibi olur. Tekrardan nice benli , hedeflere ulaşılmış yaşlara. 🎂✨</p>
+    <div class="footer">— Arda 😁</div>
+
+    <div class="cake-btn" id="cake" aria-label="Pasta animasyonu">🎂</div>
+
+    <button class="send-btn" id="send" aria-label="YouTube videosunu 1:16'dan aç">🎵 Videoyu 1:16'dan Aç</button>
+  </main>
+
+  <script>
+    (function(){
+      const colors = ['#ff6b6b','#ffd93d','#6bcfef','#95d47a','#b197fc'];
+      const container = document.getElementById('confetti');
+      for(let i=0;i<52;i++){
+        const c=document.createElement('span');
+        c.style.left = Math.random()*100 + 'vw';
+        c.style.background = colors[i%colors.length];
+        c.style.animationDuration = (6+Math.random()*4)+'s';
+        c.style.animationDelay = (Math.random()*2)+'s';
+        c.style.transform = 'translateY(-10px) rotate(' + (Math.random()*360) + 'deg)';
+        container.appendChild(c);
+      }
+    })();
+
+    // Pasta animasyonu
+    const cake=document.getElementById('cake');
+    cake.addEventListener('click',()=>{
+      cake.classList.remove('animate');
+      void cake.offsetWidth; // reset animation
+      cake.classList.add('animate');
+    });
+
+    // YouTube'u 1:16'dan açan buton
+    const sendBtn=document.getElementById('send');
+    sendBtn.addEventListener('click',()=>{
+      const url = 'https://youtu.be/6Gld2w9Ph_M?t=76'; // 1:16 = 76sn
+      const win = window.open(url, '_blank', 'noopener');
+      if(!win){
+        // pop-up engellenirse aynı pencerede aç
+        location.href = url;
+      }
+    });
+  </script>
+</body>
+</html>
