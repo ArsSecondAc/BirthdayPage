@@ -56,7 +56,6 @@
       font-size:1rem;
       cursor:pointer;
       transition: background 0.3s, transform .08s;
-      text-decoration:none; display:inline-block;
     }
     .send-btn:active{ transform: scale(.98); }
     .send-btn:hover{background:#e63c91}
@@ -71,14 +70,12 @@
 
   <main class="card" role="main" aria-label="Doğum günü mesajı">
     <div class="emoji">💖</div>
-    <h1>Doğum Günün Kutlu Olsun</h1>
-    <p>İyi ki varsın, iyi ki doğdun! Seninle olan dostluğumuz benim için çok değerli. Umarım bugün sana çok güzel anılar getirir, bolca kahkaha atar ve unutulmaz bir gün yaşarsın 🎂✨</p>
-    <div class="footer">— Arda Arslan</div>
+    <h1>Doğum Günün Kutlu Olsun🥳</h1>
+    <p>İyi ki varsın, iyi ki doğdun. Umarım hayatın sağlıklı mutlu ve istediğin gibi olur. Tekrardan nice benli , hedeflere ulaşılmış yaşlara. 🎂✨</p>
+    <div class="footer">— Arda 😁</div>
 
     <div class="cake-btn" id="cake" aria-label="Pasta animasyonu">🎂</div>
 
-    <!-- YouTube'u 1:16'dan açan bağlantı (daha kararlı) -->
-    <a class="send-btn" id="send" href="https://www.youtube.com/watch?v=6Gld2w9Ph_M&t=76s" target="_blank" rel="noopener" aria-label="YouTube videosunu 1:16'dan aç">🎵 Videoyu 1:16'dan Aç</a>
   </main>
 
   <script>
@@ -102,6 +99,8 @@
       cake.classList.remove('animate');
       void cake.offsetWidth; // reset animation
       cake.classList.add('animate');
+    });
+
     });
   </script>
 </body>
